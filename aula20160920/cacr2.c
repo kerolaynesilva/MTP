@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-
+#include <complex.h>
 void delta(float a,float b,float c);
 
 int main(){
@@ -9,27 +9,25 @@ int main(){
     scanf("%f", &a);
     scanf("%f", &b);
     scanf("%f", &c);
-    void delta(float a,float b,float c);
+    delta(a,b,c);
     return 0;
 }
 
 void delta(float a,float b,float c){
     float delta, raiz1,raiz2;
-    char I = 'i';
+    double complex Z1,Z2;
     delta = b*b - 4*a*c;
     if(delta > 0){
        raiz1 = (-b + sqrt(delta))/(2*a);
        raiz2 = (-b - sqrt(delta))/(2*a);
-       printf("Raizes: %d e %d", raiz1,raiz2);
+       printf("Raizes: %.2f e %.2f \n", raiz1,raiz2);
     }
-    if(delta = 0){
-        raiz1 = -b/(2*a);
-        printf("Raiz: %d ", raiz1);
+    if(delta == 0){
+        printf("Raizes = %.2f \n", -b/(2*a));
     }
-    else{
-        raiz1 = -b/(2*a) + I* sqrt(-delta)/(2*a);
-        raiz2 = -b/(2*a) - I* sqrt(-delta)/(2*a);
-        printf("Raizes: %d e %d", raiz1,raiz2);
+    if(delta < 0){
+        Z1 = -b/(2*a) + I* sqrt(-delta)/(2*a);
+        Z2 = -b/(2*a) - I* sqrt(-delta)/(2*a);
+        printf("Raizes:  %lf + %lf*i e %lf + %lf*i \n", creal(Z1),cimag(Z1),creal(Z2),cimag(Z2));
     }
 }
-

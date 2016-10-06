@@ -1,50 +1,76 @@
 #include <stdio.h>
-#include <string.h>
-
-#define RECEBE(cadastro) \
-    ({ printf("Entre com o nome: "); \
-       gets(cadastro.nome); \
-       printf("Entre com a idade: "); \
-       scanf("%f", &cadastro.idade); \
-       printf("Entre com o telefone: "); \
-       scanf("%f", &cadastro.telefone); })
-
-#define MOSTRA_NOME(cadastro) \
-    ({ printf("%g\n", cadastro.nome);})
-
-#define MOSTRA_IDADE(cadastro) \
-    ({ printf("%g\n", cadastro.idade);})
-
-#define MOSTRA_TELEFONE(cadastro) \
-    ({ printf("%g\n", cadastro.telefone);})
-
-struct Cadastro{
-    char nome[200];
+#define N 1000
+int n;
+struct cadastro{
+    char nome[100];
     int idade;
-    double telefone;
-};
-
-int main(){
-    struct Cadastro N,I,T;
-    int opcao;
-    RECEBE(N);
-    RECEBE(I);
-    RECEBE(T);
-    printf("Escolha uma opcao:\n 1-Mostra nomes;\n 2-Mostra idades;\n 3-Mostra telefones;\n");
-    scanf("%d", &opcao);
-    switch(opcao)
-    {
-    case 1:
-       MOSTRA_NOME(N);
-       break;
-    case 2:
-        MOSTRA_IDADE(I);
-        break;
-    case 3:
-        MOSTRA_TELEFONE(T);
-        break;
-    }
-    return 0;
+    int telefone;
+    };
+struct cadastro vetor[50];
+void cadastrar()
+{
+   int i;
+	for(i = 0 ; i < n ; i++)
+	{
+		printf("\nCadastrando");
+		printf ("Nome:\n");
+		fflush(stdin);
+		gets(vetor[i].nome);
+		printf("Idade:\n");
+		scanf("%d", &vetor[i].idade);
+		printf("Telefone:\n");
+		scanf("%d", &vetor[i].telefone);
 }
+}
+void nomes ()
+{
+printf("Nomes cadastrados:\n");
+int i;
+	for(i = 0 ; i < n ; i++)
+printf("%s\n", vetor[i].nome);
+}
+void idades ()
+{
+    int i=0;
+printf("Idades cadastrados:\n");
+	for(i = 0 ; i < n ; i++)
+printf("%d\n", vetor[i].idade);
+}
+void telefones ()
+{
+    int i;
+printf("Telefones cadastrados:\n");
+	for(i = 0 ; i < n ; i++)
+printf("%d\n", vetor[i].telefone);
+}
+int main (){
+    int opcao;
+    printf("Digite o numero de pessoas que devem ser cadastradas:\n");
+	scanf("%d", &n);
+    do {
+    printf("Escolha o que deseja fazer:\n");
+    printf("1 - Cadastrar pessoas.\n");
+    printf("2 - Lista todos os nomes cadastrados.\n");
+    printf("3 - Lista todas as idades cadastradas.\n");
+    printf("4 - Lista todos os telefones cadastradas.\n");
+    printf("5 - Sair do programa\n");
+    scanf("%d", &opcao);
+switch (opcao)
+{
+        case 1:
+            cadastrar();
+            break;
+        case 2:
+           nomes ();
+           break;
+        case 3:
+           idades ();
+           break;
+        case 4:
+            telefones ();
+            break;
+}
+    }while(opcao!=5);
 
 
+return 0;}

@@ -18,9 +18,9 @@ int main(){
 }
 void recebe(float * dados, int ndados){
     int i;
-    for(i=0; i<ndados; i++)
+    for(i=0; i<ndados; i++){
         printf("Entre com o dado #%d: ",i);
-        scanf("%f", &dados[i]);
+        scanf("%f", &dados[i]);}
 }
 float media(float * dados,int ndados){
     float soma = 0.f;
